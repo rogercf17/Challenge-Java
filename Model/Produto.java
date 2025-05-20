@@ -1,20 +1,18 @@
 package Challenge.Model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Produto {
     private int id;
     private String nome;
     private int quantidade;
     private String categoria;
-    private Date validade;
 
-    public Produto(int id, String nome, int quantidade, String categoria, Date validade) {
+    public Produto(int id, String nome, int quantidade, String categoria) {
         this.id= id;
         this.nome = nome;
         this.quantidade = quantidade;
         this.categoria = categoria;
-        this.validade = validade;
     }
 
     public int getId() {
@@ -45,20 +43,12 @@ public abstract class Produto {
         this.categoria = categoria;
     }
 
-    public Date getValidade() {
-        return validade;
-    }
-    public void setValidade(Date validade) {
-        this.validade = validade;
-    }
-
     public abstract boolean estaVencido();
 
-    public void adicionarQuantidade(int quantidadeAMais) {
-        this.quantidade += quantidadeAMais;
-    }
-    public void adicionarQuantidade(int quantidadeAMais, String lote) {
-        this.quantidade += quantidadeAMais;
-        System.out.println("Adicionando "+quantidadeAMais+" unidades do lote "+lote);
+    public void adicionarQuantidade(int quantidadeAMais) {quantidade += quantidadeAMais;}
+    public void retirarQuantidade(int quantidadeAMenos){quantidade -= quantidadeAMenos;}
+
+    public void exibirInfos() {
+        System.out.println(id+" - "+nome+"\nQuantidade em estoque: "+quantidade+"\nCategoria: "+categoria);
     }
 }

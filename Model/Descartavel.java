@@ -1,13 +1,14 @@
 package Challenge.Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Descartavel extends Produto {
     private String material;
     private boolean esteril;
 
-    public Descartavel(int id, String nome, int quantidade, String categoria, Date validade, String material, boolean esteril) {
-        super(id,nome,quantidade,categoria,validade);
+    public Descartavel(int id, String nome, int quantidade, String categoria, String material, boolean esteril) {
+        super(id,nome,quantidade,categoria);
         this.material = material;
         this.esteril = esteril;
     }
@@ -28,6 +29,13 @@ public class Descartavel extends Produto {
 
     @Override
     public boolean estaVencido() {
-        return false; // AINDA NÃO IMPLEMENTADO CORRETAMENTWE
+        return false;
+    }
+
+    @Override
+    public void exibirInfos() {
+        super.exibirInfos();
+        String eEsteril = esteril ? "sim" : "não";
+        System.out.println("Material: "+material+"\nÉ esteril: "+eEsteril);
     }
 }

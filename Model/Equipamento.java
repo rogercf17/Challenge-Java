@@ -1,13 +1,14 @@
 package Challenge.Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Equipamento extends Produto {
     private String numeroSerie;
     private Date dataManutencao;
 
-    public Equipamento(int id, String nome, int quantidade, String categoria, Date validade, String numeroSerie, Date dataManutencao) {
-        super(id, nome, quantidade, categoria, validade);
+    public Equipamento(int id, String nome, int quantidade, String categoria, String numeroSerie, Date dataManutencao) {
+        super(id, nome, quantidade, categoria);
         this.numeroSerie = numeroSerie;
         this.dataManutencao = dataManutencao;
     }
@@ -29,5 +30,11 @@ public class Equipamento extends Produto {
     @Override
     public boolean estaVencido() {
         return false; // AINDA NÃO IMPLEMENTADO CORRETAMENTE
+    }
+
+    @Override
+    public void exibirInfos() {
+        super.exibirInfos();
+        System.out.println("Número de série: "+numeroSerie+"\nData de manutenção: "+dataManutencao);
     }
 }
