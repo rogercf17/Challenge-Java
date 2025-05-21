@@ -23,4 +23,12 @@ public class ProdutoController {
     public List<Produto> listarProdutos() {
         return repository.listarProdutos();
     }
+
+    public Produto buscarProdutoPorId(String id) {
+        return repository.buscarPorId(id);
+    }
+
+    public void removerProduto(Produto produto) {
+        repository.remover(produto);
+    }
 }

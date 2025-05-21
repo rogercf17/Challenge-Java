@@ -1,24 +1,22 @@
 package Challenge.Model;
 
-import java.time.LocalDate;
-
 public abstract class Produto {
-    private int id;
+    private String id;
     private String nome;
     private int quantidade;
     private String categoria;
 
-    public Produto(int id, String nome, int quantidade, String categoria) {
+    public Produto(String id, String nome, int quantidade, String categoria) {
         this.id= id;
         this.nome = nome;
         this.quantidade = quantidade;
         this.categoria = categoria;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

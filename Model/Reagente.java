@@ -7,7 +7,7 @@ public class Reagente extends Produto {
     private double ph;
     private String temperaturaIdeal;
 
-    public Reagente(int id, String nome, int quantidade, String categoria, double ph, String temperaturaIdeal) {
+    public Reagente(String id, String nome, int quantidade, String categoria, double ph, String temperaturaIdeal) {
         super(id,nome,quantidade,categoria);
         this.ph = ph;
         this.temperaturaIdeal = temperaturaIdeal;

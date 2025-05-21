@@ -1,13 +1,12 @@
 package Challenge.Model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Equipamento extends Produto {
     private String numeroSerie;
-    private Date dataManutencao;
+    private LocalDate dataManutencao;
 
-    public Equipamento(int id, String nome, int quantidade, String categoria, String numeroSerie, Date dataManutencao) {
+    public Equipamento(String id, String nome, int quantidade, String categoria, String numeroSerie, LocalDate dataManutencao) {
         super(id, nome, quantidade, categoria);
         this.numeroSerie = numeroSerie;
         this.dataManutencao = dataManutencao;
@@ -20,10 +19,10 @@ public class Equipamento extends Produto {
         this.numeroSerie = numeroSerie;
     }
 
-    public Date getDataManutencao() {
+    public LocalDate getDataManutencao() {
         return dataManutencao;
     }
-    public void setDataManutencao(Date dataManutencao) {
+    public void setDataManutencao(LocalDate dataManutencao) {
         this.dataManutencao = dataManutencao;
     }
 

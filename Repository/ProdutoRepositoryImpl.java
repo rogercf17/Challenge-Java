@@ -1,30 +1,24 @@
 package Challenge.Repository;
 
 import Challenge.Model.Produto;
-
 import java.util.*;
 
 public class ProdutoRepositoryImpl implements ProdutoRepository {
-    private List<Produto> produtos = new ArrayList<>();
+    private final Map<String, Produto> storage = new HashMap<>();
 
     public void salvar(Produto produto) {
-        produtos.add(produto);
+        storage.put(produto.getId(), produto);
     }
 
     public void remover(Produto produto) {
-        produtos.remove(produto);
+        storage.remove(produto.getId());
     }
 
-    public Produto buscarPorId(int id) {
-        for (Produto produto : produtos) {
-            if (produto.getId() == id) {
-                return produto;
-            }
-        }
-        return null;
+    public Produto buscarPorId(String id) {
+        return storage.get(id);
     }
 
     public List<Produto> listarProdutos() {
-        return produtos;
+        return new ArrayList<>(storage.values());
     }
 }
