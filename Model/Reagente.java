@@ -1,14 +1,13 @@
 package Challenge.Model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Reagente extends Produto {
     private double ph;
     private String temperaturaIdeal;
 
     public Reagente(String id, String nome, int quantidade, String categoria, double ph, String temperaturaIdeal) {
-        super(id,nome,quantidade,categoria);
+        super(id, nome, quantidade, categoria);
         this.ph = ph;
         this.temperaturaIdeal = temperaturaIdeal;
     }

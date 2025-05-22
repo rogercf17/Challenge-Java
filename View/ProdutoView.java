@@ -116,7 +116,6 @@ public class ProdutoView {
     private void buscarProduto() {
         System.out.println("Digite o ID do produto procurado: ");
         String id = scanner.nextLine();
-        scanner.nextLine();
 
         Produto produto = controller.buscarProdutoPorId(id);
 

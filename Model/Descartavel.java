@@ -1,14 +1,13 @@
 package Challenge.Model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Descartavel extends Produto {
     private String material;
     private boolean esteril;
 
     public Descartavel(String id, String nome, int quantidade, String categoria, String material, boolean esteril) {
-        super(id,nome,quantidade,categoria);
+        super(id, nome, quantidade, categoria);
         this.material = material;
         this.esteril = esteril;
     }
