@@ -13,7 +13,7 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
 
     @Override
     public void inserir(Remedio remedio) throws SQLException {
-        String sql = "INSERT INTO remedio (id, nome, fabricante, quantidade, preco_unitario, lote, principio_ativo, forma_farmaceutica, via_administracao, data_fabricacao, data_validade, controlado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO remedio (id, nome, fabricante, quantidade, preco_unitario, lote, principio_ativo, forma_farmaceutica, via_administracao, data_fabricacao, data_validade, controlado) VALUES (PRODUTO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, remedio.getId());
@@ -27,7 +27,7 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
             statement.setString(9, remedio.getViaAdministracao());
             statement.setTimestamp(10, Timestamp.valueOf(remedio.getDataFabricacao()));
             statement.setTimestamp(11, Timestamp.valueOf(remedio.getDataValidade()));
-            statement.setBoolean(12, remedio.isControlado());
+            statement.setString(12, remedio.isControlado() ? "S" : "N");
             statement.executeUpdate();
         }
     }
@@ -47,7 +47,7 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
             statement.setString(8, remedio.getViaAdministracao());
             statement.setTimestamp(9, Timestamp.valueOf(remedio.getDataFabricacao()));
             statement.setTimestamp(10, Timestamp.valueOf(remedio.getDataValidade()));
-            statement.setBoolean(11, remedio.isControlado());
+            statement.setString(11, remedio.isControlado() ? "S" : "N");
             statement.setLong(12, remedio.getId());
             statement.executeUpdate();
         }
@@ -97,6 +97,9 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
     }
 
     private Remedio mapearRemedio(ResultSet resultSet) throws SQLException {
+        String controladoStr = resultSet.getString("controlado");
+        boolean controlado = "S".equalsIgnoreCase(controladoStr);
+
         return new Remedio(
                 resultSet.getLong("id"),
                 resultSet.getString("nome"),
@@ -109,7 +112,7 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
                 resultSet.getString("via_administracao"),
                 resultSet.getTimestamp("data_fabricacao").toLocalDateTime(),
                 resultSet.getTimestamp("data_validade").toLocalDateTime(),
-                resultSet.getBoolean("controlado")
+                controlado
         );
     }
 }

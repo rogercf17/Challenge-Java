@@ -15,7 +15,7 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
 
     @Override
     public void inserir(Descartavel descartavel) throws SQLException {
-        String sql = "INSERT INTO descartavel (id, nome, fabricante, quantidade, preco_unitario, material, uso_previsto, data_validade, esterelizado, descartado_apos_uso, tipo_descartavel, categoria_risco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO descartavel (id, nome, fabricante, quantidade, preco_unitario, material, uso_previsto, data_validade, esterelizado, descartado_apos_uso, tipo_descartavel, categoria_risco) VALUES (PRODUTO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, descartavel.getId());
@@ -26,8 +26,8 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
             statement.setString(6, descartavel.getMaterial());
             statement.setString(7, descartavel.getUsoPrevisto());
             statement.setTimestamp(8, Timestamp.valueOf(descartavel.getDataValidade()));
-            statement.setBoolean(9, descartavel.isEsterelizado());
-            statement.setBoolean(10, descartavel.isDescartadoAposUso());
+            statement.setString(9, descartavel.isEsterelizado() ? "S" : "N");
+            statement.setString(10, descartavel.isDescartadoAposUso() ? "S" : "N");
             statement.setString(11, descartavel.getTipoDescartavel().name());
             statement.setString(12, descartavel.getCategoriaRisco().name());
             statement.executeUpdate();
@@ -46,8 +46,8 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
             statement.setString(5, descartavel.getMaterial());
             statement.setString(6, descartavel.getUsoPrevisto());
             statement.setTimestamp(7, Timestamp.valueOf(descartavel.getDataValidade()));
-            statement.setBoolean(8, descartavel.isEsterelizado());
-            statement.setBoolean(9, descartavel.isDescartadoAposUso());
+            statement.setString(8, descartavel.isEsterelizado() ? "S" : "N");
+            statement.setString(9, descartavel.isDescartadoAposUso() ? "S" : "N");
             statement.setString(10, descartavel.getTipoDescartavel().name());
             statement.setString(11, descartavel.getCategoriaRisco().name());
             statement.setLong(12, descartavel.getId());
@@ -99,6 +99,11 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
     }
 
     private Descartavel mapearDescartavel(ResultSet resultSet) throws SQLException {
+        String esterelizadoStr = resultSet.getString("esterelizado");
+        String descartadoAposUsoStr = resultSet.getString("descartado_apos_uso");
+        boolean esterelizado = "S".equalsIgnoreCase(esterelizadoStr);
+        boolean descartadoAposUso = "S".equalsIgnoreCase(descartadoAposUsoStr);
+
         return new Descartavel(
                 resultSet.getLong("id"),
                 resultSet.getString("nome"),
@@ -108,8 +113,8 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
                 resultSet.getString("material"),
                 resultSet.getString("uso_previsto"),
                 resultSet.getTimestamp("data_validade").toLocalDateTime(),
-                resultSet.getBoolean("esterelizado"),
-                resultSet.getBoolean("descartado_apos_uso"),
+                esterelizado,
+                descartadoAposUso,
                 TipoDescartavel.valueOf(resultSet.getString("tipo_descartavel")),
                 CategoriaRisco.valueOf(resultSet.getString("categoria_risco"))
         );

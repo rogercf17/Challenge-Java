@@ -13,7 +13,7 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
 
     @Override
     public void inserir(Equipamento equipamento) throws SQLException {
-        String sql = "INSERT INTO equipamento (id, nome, fabricante, quantidade, preco_unitario, numero_serie, setor, data_aquisicao, ultima_manutencao, vida_util_meses, em_uso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipamento (id, nome, fabricante, quantidade, preco_unitario, numero_serie, setor, data_aquisicao, ultima_manutencao, vida_util_meses, em_uso) VALUES (PRODUTO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, equipamento.getId());
@@ -26,7 +26,7 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
             statement.setTimestamp(8, Timestamp.valueOf(equipamento.getDataAquisicao()));
             statement.setTimestamp(9, Timestamp.valueOf(equipamento.getUltimaManutencao()));
             statement.setInt(10, equipamento.getVidaUtilMeses());
-            statement.setBoolean(11, equipamento.isEmUso());
+            statement.setString(11, equipamento.isEmUso() ? "S" : "N");
             statement.executeUpdate();
         }
     }
@@ -45,7 +45,7 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
             statement.setTimestamp(7, Timestamp.valueOf(equipamento.getDataAquisicao()));
             statement.setTimestamp(8, Timestamp.valueOf(equipamento.getUltimaManutencao()));
             statement.setInt(9, equipamento.getVidaUtilMeses());
-            statement.setBoolean(10, equipamento.isEmUso());
+            statement.setString(10, equipamento.isEmUso() ? "S" : "N");
             statement.setLong(11, equipamento.getId());
             statement.executeUpdate();
         }
@@ -95,6 +95,9 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
     }
 
     private Equipamento mapearEquipamento(ResultSet resultSet) throws SQLException {
+        String emUsoStr = resultSet.getString("em_uso");
+        boolean emUso = "S".equalsIgnoreCase(emUsoStr);
+
         return new Equipamento(
                 resultSet.getLong("id"),
                 resultSet.getString("nome"),
@@ -106,7 +109,7 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
                 resultSet.getTimestamp("data_aquisicao").toLocalDateTime(),
                 resultSet.getTimestamp("ultima_manutencao").toLocalDateTime(),
                 resultSet.getInt("vida_util_meses"),
-                resultSet.getBoolean("em_uso")
+                emUso
         );
     }
 }
