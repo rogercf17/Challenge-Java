@@ -120,4 +120,19 @@ public class RemedioController {
             System.out.println("Erro ao buscar remédio por princípio ativo: "+ e.getMessage());
         }
     }
+
+    public void listarRemediosControlados() {
+        List<Remedio> remedios = remedioService.listarControlados();
+
+        try {
+            if (!remedios.isEmpty()) {
+                System.out.println("Remédios controlados:");
+                remedios.forEach(System.out::println);
+            }else {
+                System.out.println("Nenhum remédio controlado foi encontrado");
+            }
+        }catch (Exception e) {
+            System.out.println("Erro ao listar remédios controlados: "+ e.getMessage());
+        }
+    }
 }
