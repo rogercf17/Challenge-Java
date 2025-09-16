@@ -27,7 +27,7 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
             statement.setString(9, remedio.getViaAdministracao());
             statement.setTimestamp(10, Timestamp.valueOf(remedio.getDataFabricacao()));
             statement.setTimestamp(11, Timestamp.valueOf(remedio.getDataValidade()));
-            statement.setString(12, remedio.isControlado() ? "S" : "N");
+            statement.setString(12, remedio.isControlado() ? "Y" : "N");
             statement.executeUpdate();
         }
     }
@@ -47,7 +47,7 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
             statement.setString(8, remedio.getViaAdministracao());
             statement.setTimestamp(9, Timestamp.valueOf(remedio.getDataFabricacao()));
             statement.setTimestamp(10, Timestamp.valueOf(remedio.getDataValidade()));
-            statement.setString(11, remedio.isControlado() ? "S" : "N");
+            statement.setString(11, remedio.isControlado() ? "Y" : "N");
             statement.setLong(12, remedio.getId());
             statement.executeUpdate();
         }

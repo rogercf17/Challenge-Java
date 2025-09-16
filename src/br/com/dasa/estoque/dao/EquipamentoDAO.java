@@ -26,7 +26,7 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
             statement.setTimestamp(8, Timestamp.valueOf(equipamento.getDataAquisicao()));
             statement.setTimestamp(9, Timestamp.valueOf(equipamento.getUltimaManutencao()));
             statement.setInt(10, equipamento.getVidaUtilMeses());
-            statement.setString(11, equipamento.isEmUso() ? "S" : "N");
+            statement.setString(11, equipamento.isEmUso() ? "Y" : "N");
             statement.executeUpdate();
         }
     }
@@ -45,7 +45,7 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
             statement.setTimestamp(7, Timestamp.valueOf(equipamento.getDataAquisicao()));
             statement.setTimestamp(8, Timestamp.valueOf(equipamento.getUltimaManutencao()));
             statement.setInt(9, equipamento.getVidaUtilMeses());
-            statement.setString(10, equipamento.isEmUso() ? "S" : "N");
+            statement.setString(10, equipamento.isEmUso() ? "Y" : "N");
             statement.setLong(11, equipamento.getId());
             statement.executeUpdate();
         }

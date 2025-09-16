@@ -26,8 +26,8 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
             statement.setString(6, descartavel.getMaterial());
             statement.setString(7, descartavel.getUsoPrevisto());
             statement.setTimestamp(8, Timestamp.valueOf(descartavel.getDataValidade()));
-            statement.setString(9, descartavel.isEsterelizado() ? "S" : "N");
-            statement.setString(10, descartavel.isDescartadoAposUso() ? "S" : "N");
+            statement.setString(9, descartavel.isEsterelizado() ? "Y" : "N");
+            statement.setString(10, descartavel.isDescartadoAposUso() ? "Y" : "N");
             statement.setString(11, descartavel.getTipoDescartavel().name());
             statement.setString(12, descartavel.getCategoriaRisco().name());
             statement.executeUpdate();
@@ -46,8 +46,8 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
             statement.setString(5, descartavel.getMaterial());
             statement.setString(6, descartavel.getUsoPrevisto());
             statement.setTimestamp(7, Timestamp.valueOf(descartavel.getDataValidade()));
-            statement.setString(8, descartavel.isEsterelizado() ? "S" : "N");
-            statement.setString(9, descartavel.isDescartadoAposUso() ? "S" : "N");
+            statement.setString(8, descartavel.isEsterelizado() ? "Y" : "N");
+            statement.setString(9, descartavel.isDescartadoAposUso() ? "Y" : "N");
             statement.setString(10, descartavel.getTipoDescartavel().name());
             statement.setString(11, descartavel.getCategoriaRisco().name());
             statement.setLong(12, descartavel.getId());
