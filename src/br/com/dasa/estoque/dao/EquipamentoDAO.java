@@ -16,17 +16,16 @@ public class EquipamentoDAO implements ProdutoDAO<Equipamento> {
         String sql = "INSERT INTO equipamento (id, nome, fabricante, quantidade, preco_unitario, numero_serie, setor, data_aquisicao, ultima_manutencao, vida_util_meses, em_uso) VALUES (PRODUTO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, equipamento.getId());
-            statement.setString(2, equipamento.getNome());
-            statement.setString(3, equipamento.getFabricante());
-            statement.setInt(4, equipamento.getQuantidade());
-            statement.setDouble(5, equipamento.getPrecoUnitario());
-            statement.setString(6, equipamento.getNumeroSerie());
-            statement.setString(7, equipamento.getSetor());
-            statement.setTimestamp(8, Timestamp.valueOf(equipamento.getDataAquisicao()));
-            statement.setTimestamp(9, Timestamp.valueOf(equipamento.getUltimaManutencao()));
-            statement.setInt(10, equipamento.getVidaUtilMeses());
-            statement.setString(11, equipamento.isEmUso() ? "Y" : "N");
+            statement.setString(1, equipamento.getNome());
+            statement.setString(2, equipamento.getFabricante());
+            statement.setInt(3, equipamento.getQuantidade());
+            statement.setDouble(4, equipamento.getPrecoUnitario());
+            statement.setString(5, equipamento.getNumeroSerie());
+            statement.setString(6, equipamento.getSetor());
+            statement.setTimestamp(7, Timestamp.valueOf(equipamento.getDataAquisicao()));
+            statement.setTimestamp(8, Timestamp.valueOf(equipamento.getUltimaManutencao()));
+            statement.setInt(9, equipamento.getVidaUtilMeses());
+            statement.setString(10, equipamento.isEmUso() ? "Y" : "N");
             statement.executeUpdate();
         }
     }

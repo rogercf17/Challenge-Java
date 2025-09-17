@@ -105,8 +105,19 @@ public class Remedio extends Produto {
 
     @Override
     public String toString() {
-        return "Remédio: "+getNome()+" - ID: "+getId()+"" +
-                "\nLote: "+lote+"\nValidade: "+dataValidade+"\né controlado? "+controlado+
-                "\nEstá vencido? "+isVencido();
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(getId()).append("\n")
+                .append("Nome: ").append(getNome()).append("\n")
+                .append("Fabricante: ").append(getFabricante()).append("\n")
+                .append("Lote: ").append(lote).append("\n")
+                .append("Princípio Ativo: ").append(principioAtivo).append("\n")
+                .append("Forma Farmacêutica: ").append(formaFarmaceutica).append("\n")
+                .append("Via Administração: ").append(viaAdministracao).append("\n")
+                .append("Data Fabricação: ").append(DateParsing.formatDateTime(dataFabricacao)).append("\n")
+                .append("Validade: ").append(DateParsing.formatDateTime(dataValidade)).append("\n")
+                .append("Controlado: ").append(controlado ? "Sim" : "Não").append("\n")
+                .append("Vencido: ").append(isVencido() ? "Sim" : "Não").append("\n");
+        return sb.toString();
     }
+
 }

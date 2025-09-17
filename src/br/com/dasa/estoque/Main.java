@@ -326,12 +326,12 @@ public class Main {
                     String setor = scanner.nextLine();
 
                     System.out.println("Digite a data de aquisição (dd/MM/yyyy): ");
-                    String dataAqStr = scanner.nextLine();
-                    LocalDateTime dataAquisicao = DateParsing.parseDateTime(dataAqStr);
+                    String dataAquisicaoStr = scanner.nextLine();
+                    LocalDateTime dataAquisicao = DateParsing.parseDateTime(dataAquisicaoStr);
 
                     System.out.println("Digite a data da última manutenção (dd/MM/yyyy): ");
-                    String dataManutStr = scanner.nextLine();
-                    LocalDateTime ultimaManutencao = DateParsing.parseDateTime(dataManutStr);
+                    String dataManutencaotStr = scanner.nextLine();
+                    LocalDateTime dataManutencao = DateParsing.parseDateTime(dataManutencaotStr);
 
                     System.out.println("Digite a vida útil em meses: ");
                     int vidaUtilMeses = scanner.nextInt();
@@ -351,7 +351,7 @@ public class Main {
                             numeroSerie,
                             setor,
                             dataAquisicao,
-                            ultimaManutencao,
+                            dataManutencao,
                             vidaUtilMeses,
                             emUso
                     );
@@ -487,67 +487,81 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Digite o nome: ");
+                    System.out.println("Digite o nome: ");
                     String nome = scanner.nextLine();
-                    System.out.print("Digite o fabricante: ");
+
+                    System.out.println("Digite o fabricante: ");
                     String fabricante = scanner.nextLine();
-                    System.out.print("Digite a quantidade: ");
+
+                    System.out.println("Digite a quantidade: ");
                     int quantidade = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Digite o preço unitário: ");
+
+                    System.out.println("Digite o preço unitário: ");
                     double preco = scanner.nextDouble();
                     scanner.nextLine();
-                    System.out.print("Digite o material: ");
+
+                    System.out.println("Digite o material: ");
                     String material = scanner.nextLine();
-                    System.out.print("Digite o uso previsto: ");
+
+                    System.out.println("Digite o uso previsto: ");
                     String usoPrevisto = scanner.nextLine();
-                    System.out.print("Digite a data de validade (yyyy-MM-ddTHH:mm): ");
-                    LocalDateTime dataValidade = LocalDateTime.parse(scanner.nextLine());
-                    System.out.print("Está esterilizado? (true/false): ");
-                    boolean esterelizado = scanner.nextBoolean();
-                    System.out.print("Descartado após uso? (true/false): ");
-                    boolean descartadoAposUso = scanner.nextBoolean();
+
+                    System.out.println("Digite a data de validade (yyyy-MM-dd HH:mm:ss): ");
+                    String dataValidadeStr = scanner.nextLine();
+                    LocalDateTime dataValidade = DateParsing.parseDateTime(dataValidadeStr);
+
+                    System.out.println("Está esterilizado? (1 - Sim, 0 - Não): ");
+                    int esterelizadoInt = scanner.nextInt();
+                    boolean esterelizado = (esterelizadoInt == 1);
                     scanner.nextLine();
-                    System.out.print("Digite o tipo de descartável (ex: LUVAS, SERINGA...): ");
-                    TipoDescartavel tipo = TipoDescartavel.valueOf(scanner.nextLine().toUpperCase());
-                    System.out.print("Digite a categoria de risco (ex: BAIXO, MEDIO, ALTO): ");
+
+                    System.out.println("Descartado após uso? (1 - Sim, 0 - Não): ");
+                    int descartadoAposUsoInt = scanner.nextInt();
+                    boolean descartadoAposUso = (descartadoAposUsoInt == 1);
+                    scanner.nextLine();
+
+                    System.out.println("Digite o tipo de descartável (ex: EPI, MATERIAL_COLETA, EMBALAGEM, OUTROS): ");
+                    TipoDescartavel tipoDescartavel = TipoDescartavel.valueOf(scanner.nextLine().toUpperCase());
+
+                    System.out.println("Digite a categoria de risco (ex: PERFURANTE, BIOLOGICO, NAO_CONTAMINANTE): ");
                     CategoriaRisco categoriaRisco = CategoriaRisco.valueOf(scanner.nextLine().toUpperCase());
 
                     Descartavel descartavel = new Descartavel(
                             null, nome, fabricante, quantidade, preco,
                             material, usoPrevisto, dataValidade, esterelizado,
-                            descartadoAposUso, tipo, categoriaRisco
+                            descartadoAposUso, tipoDescartavel, categoriaRisco
                     );
 
                     descartavelController.adicionarDescartavel(descartavel);
                     break;
 
                 case 2:
-                    System.out.print("Digite o ID do descartável a remover: ");
+                    System.out.println("Digite o ID do descartável a remover: ");
                     Long idRemover = scanner.nextLong();
                     descartavelController.removerDescartavel(idRemover);
                     break;
 
                 case 3:
-                    System.out.print("Digite o ID do descartável a atualizar: ");
+                    System.out.println("Digite o ID do descartável a atualizar: ");
                     Long idAtualizar = scanner.nextLong();
                     scanner.nextLine();
                     Descartavel descartavelExistente = descartavelService.buscarPorId(idAtualizar);
 
                     if (descartavelExistente != null) {
-                        System.out.print("Novo nome (" + descartavelExistente.getNome() + "): ");
+                        System.out.println("Novo nome (" + descartavelExistente.getNome() + "): ");
                         String novoNome = scanner.nextLine();
                         if (!novoNome.isEmpty()) descartavelExistente.setNome(novoNome);
 
-                        System.out.print("Novo fabricante (" + descartavelExistente.getFabricante() + "): ");
+                        System.out.println("Novo fabricante (" + descartavelExistente.getFabricante() + "): ");
                         String novoFabricante = scanner.nextLine();
                         if (!novoFabricante.isEmpty()) descartavelExistente.setFabricante(novoFabricante);
 
-                        System.out.print("Nova quantidade (" + descartavelExistente.getQuantidade() + "): ");
+                        System.out.println("Nova quantidade (" + descartavelExistente.getQuantidade() + "): ");
                         String novaQtdStr = scanner.nextLine();
                         if (!novaQtdStr.isEmpty()) descartavelExistente.setQuantidade(Integer.parseInt(novaQtdStr));
 
-                        System.out.print("Novo preço (" + descartavelExistente.getPrecoUnitario() + "): ");
+                        System.out.println("Novo preço (" + descartavelExistente.getPrecoUnitario() + "): ");
                         String novoPrecoStr = scanner.nextLine();
                         if (!novoPrecoStr.isEmpty()) descartavelExistente.setPrecoUnitario(Double.parseDouble(novoPrecoStr));
 
@@ -558,13 +572,13 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Digite o ID: ");
+                    System.out.println("Digite o ID: ");
                     Long idBusca = scanner.nextLong();
                     descartavelController.buscarDescartavelPorId(idBusca);
                     break;
 
                 case 5:
-                    System.out.print("Digite o nome: ");
+                    System.out.println("Digite o nome: ");
                     String nomeBusca = scanner.nextLine();
                     descartavelController.buscarDescartavelPorNome(nomeBusca);
                     break;
@@ -582,13 +596,13 @@ public class Main {
                     break;
 
                 case 9:
-                    System.out.print("Digite a categoria de risco (ex: BAIXO, MEDIO, ALTO): ");
+                    System.out.println("Digite a categoria de risco (ex: PERFURANTE, BIOLOGICO, NAO_CONTAMINANTE): ");
                     CategoriaRisco categoriaBusca = CategoriaRisco.valueOf(scanner.nextLine().toUpperCase());
                     descartavelController.listarDescartaveisPorCategoriaRisco(categoriaBusca);
                     break;
 
                 case 10:
-                    System.out.print("Digite o uso previsto: ");
+                    System.out.println("Digite o uso previsto: ");
                     String usoBusca = scanner.nextLine();
                     descartavelController.listarDescartaveisPorUsoPrevisto(usoBusca);
                     break;

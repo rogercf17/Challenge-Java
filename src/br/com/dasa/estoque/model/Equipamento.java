@@ -89,8 +89,18 @@ public class Equipamento extends Produto {
 
     @Override
     public String toString() {
-        return "Equipamento: "+getNome()+" - ID: "+getId()+"" +
-                "\nSetor: "+setor+"\nVida Útil: "+vidaUtilMeses+"\nEstá em uso? "+emUso+
-                "\nPrecisa de manutenção? "+precisaManutencao();
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(getId()).append("\n")
+                .append("Nome: ").append(getNome()).append("\n")
+                .append("Fabricante: ").append(getFabricante()).append("\n")
+                .append("Número de Série: ").append(numeroSerie).append("\n")
+                .append("Setor: ").append(setor).append("\n")
+                .append("Data Aquisição: ").append(DateParsing.formatDateTime(dataAquisicao)).append("\n")
+                .append("Última Manutenção: ").append(DateParsing.formatDateTime(ultimaManutencao)).append("\n")
+                .append("Vida Útil (meses): ").append(vidaUtilMeses).append("\n")
+                .append("Em Uso: ").append(emUso ? "Sim" : "Não").append("\n")
+                .append("Precisa Manutenção: ").append(precisaManutencao() ? "Sim" : "Não").append("\n");
+        return sb.toString();
     }
+
 }

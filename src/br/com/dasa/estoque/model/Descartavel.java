@@ -105,9 +105,20 @@ public class Descartavel extends Produto {
 
     @Override
     public String toString() {
-        return "Descatável "+getNome()+" Tipo "+tipoDescartavel+" - ID: "+getId()+
-                "\nUso Previsto: "+usoPrevisto+"\nCategoria de risco: "+categoriaRisco+
-                "\nDescartado Após uso? "+descartadoAposUso+
-                "\nEstá dentro da validade? "+estaDentroValidade();
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(getId()).append("\n")
+                .append("Nome: ").append(getNome()).append("\n")
+                .append("Fabricante: ").append(getFabricante()).append("\n")
+                .append("Preço Unitário: R$ ").append(getPrecoUnitario()).append("\n")
+                .append("Material: ").append(material).append("\n")
+                .append("Uso Previsto: ").append(usoPrevisto).append("\n")
+                .append("Validade: ").append(DateParsing.formatDateTime(dataValidade)).append("\n")
+                .append("Esterilizado: ").append(esterelizado ? "Sim" : "Não").append("\n")
+                .append("Descartado Após Uso: ").append(descartadoAposUso ? "Sim" : "Não").append("\n")
+                .append("Tipo: ").append(tipoDescartavel).append("\n")
+                .append("Categoria de Risco: ").append(categoriaRisco).append("\n")
+                .append("Dentro da Validade: ").append(estaDentroValidade() ? "Sim" : "Não").append("\n");
+        return sb.toString();
     }
+
 }

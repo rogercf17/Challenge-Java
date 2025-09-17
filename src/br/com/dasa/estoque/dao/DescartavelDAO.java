@@ -18,18 +18,17 @@ public class DescartavelDAO implements ProdutoDAO<Descartavel> {
         String sql = "INSERT INTO descartavel (id, nome, fabricante, quantidade, preco_unitario, material, uso_previsto, data_validade, esterelizado, descartado_apos_uso, tipo_descartavel, categoria_risco) VALUES (PRODUTO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, descartavel.getId());
-            statement.setString(2, descartavel.getNome());
-            statement.setString(3, descartavel.getFabricante());
-            statement.setInt(4, descartavel.getQuantidade());
-            statement.setDouble(5, descartavel.getPrecoUnitario());
-            statement.setString(6, descartavel.getMaterial());
-            statement.setString(7, descartavel.getUsoPrevisto());
-            statement.setTimestamp(8, Timestamp.valueOf(descartavel.getDataValidade()));
-            statement.setString(9, descartavel.isEsterelizado() ? "Y" : "N");
-            statement.setString(10, descartavel.isDescartadoAposUso() ? "Y" : "N");
-            statement.setString(11, descartavel.getTipoDescartavel().name());
-            statement.setString(12, descartavel.getCategoriaRisco().name());
+            statement.setString(1, descartavel.getNome());
+            statement.setString(2, descartavel.getFabricante());
+            statement.setInt(3, descartavel.getQuantidade());
+            statement.setDouble(4, descartavel.getPrecoUnitario());
+            statement.setString(5, descartavel.getMaterial());
+            statement.setString(6, descartavel.getUsoPrevisto());
+            statement.setTimestamp(7, Timestamp.valueOf(descartavel.getDataValidade()));
+            statement.setString(8, descartavel.isEsterelizado() ? "Y" : "N");
+            statement.setString(9, descartavel.isDescartadoAposUso() ? "Y" : "N");
+            statement.setString(10, descartavel.getTipoDescartavel().name());
+            statement.setString(11, descartavel.getCategoriaRisco().name());
             statement.executeUpdate();
         }
     }

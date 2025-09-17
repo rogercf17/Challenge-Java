@@ -16,18 +16,17 @@ public class RemedioDAO implements ProdutoDAO<Remedio> {
         String sql = "INSERT INTO remedio (id, nome, fabricante, quantidade, preco_unitario, lote, principio_ativo, forma_farmaceutica, via_administracao, data_fabricacao, data_validade, controlado) VALUES (PRODUTO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, remedio.getId());
-            statement.setString(2, remedio.getNome());
-            statement.setString(3, remedio.getFabricante());
-            statement.setInt(4, remedio.getQuantidade());
-            statement.setDouble(5, remedio.getPrecoUnitario());
-            statement.setString(6, remedio.getLote());
-            statement.setString(7, remedio.getPrincipioAtivo());
-            statement.setString(8, remedio.getFormaFarmaceutica());
-            statement.setString(9, remedio.getViaAdministracao());
-            statement.setTimestamp(10, Timestamp.valueOf(remedio.getDataFabricacao()));
-            statement.setTimestamp(11, Timestamp.valueOf(remedio.getDataValidade()));
-            statement.setString(12, remedio.isControlado() ? "Y" : "N");
+            statement.setString(1, remedio.getNome());
+            statement.setString(2, remedio.getFabricante());
+            statement.setInt(3, remedio.getQuantidade());
+            statement.setDouble(4, remedio.getPrecoUnitario());
+            statement.setString(5, remedio.getLote());
+            statement.setString(6, remedio.getPrincipioAtivo());
+            statement.setString(7, remedio.getFormaFarmaceutica());
+            statement.setString(8, remedio.getViaAdministracao());
+            statement.setTimestamp(9, Timestamp.valueOf(remedio.getDataFabricacao()));
+            statement.setTimestamp(10, Timestamp.valueOf(remedio.getDataValidade()));
+            statement.setString(11, remedio.isControlado() ? "Y" : "N");
             statement.executeUpdate();
         }
     }
