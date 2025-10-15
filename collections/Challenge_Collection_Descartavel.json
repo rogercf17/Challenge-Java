@@ -1,0 +1,206 @@
+type: collection.insomnia.rest/5.0
+name: Challenge_Collection_Descartaveis
+meta:
+  id: wrk_1e1772f8e7e3490698a77b4c7f57bc2d
+  created: 1760541207775
+  modified: 1760541221864
+  description: ""
+collection:
+  - url: http://localhost:8080/descartaveis
+    name: Listar
+    meta:
+      id: req_e8d2d285e63c4267a9f8ed156ebdf4ce
+      created: 1760546177499
+      modified: 1760546185574
+      isPrivate: false
+      description: ""
+      sortKey: -1760546177499
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/descartaveis
+    name: Adicionar
+    meta:
+      id: req_1412b6a9c9e3407285fb868e9c18db10
+      created: 1760546193812
+      modified: 1760546511249
+      isPrivate: false
+      description: ""
+      sortKey: -1760546193812
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Sistema de Drenagem Cirúrgica",
+          "fabricante": "DrainMed Solutions",
+          "quantidade": 75,
+          "precoUnitario": 25.50,
+          "categoria": "Pós-Operatório",
+          "material": "Silicone Médico e PVC",
+          "usoPrevisto": "Drenagem de fluidos corporais após procedimentos",
+          "dataValidade": "2027-01-20T23:59:59",
+          "esterelizado": true,
+          "descartadoAposUso": true,
+          "tipoDescartavel": "MATERIAL_COLETA",
+          "categoriaRisco": "BIOLOGICO"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/descartaveis/3
+    name: Buscar Por ID
+    meta:
+      id: req_5a6a5ceed12a406a97bf498f0b870745
+      created: 1760546514757
+      modified: 1760546534502
+      isPrivate: false
+      description: ""
+      sortKey: -1760546514757
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/descartaveis/3
+    name: Atualizar
+    meta:
+      id: req_6b3fab29d84447be846c5ff7a6380632
+      created: 1760546540897
+      modified: 1760546609048
+      isPrivate: false
+      description: ""
+      sortKey: -1760546540897
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Luvas de Latex",
+        	"fabricante": "ProtectCare Ind",
+        	"quantidade": 1000,
+        	"precoUnitario": 0.45,
+        	"categoria": "Descartável",
+        	"material": "Latex",
+        	"usoPrevisto": "Proteção das mãos",
+        	"dataValidade": "2025-09-15T23:59:59",
+        	"esterelizado": true,
+        	"descartadoAposUso": true,
+        	"tipoDescartavel": "EPI",
+        	"categoriaRisco": "NAO_CONTAMINANTE"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/descartaveis/6
+    name: Deletar
+    meta:
+      id: req_f88092c9524148b99f6a76219cbe1164
+      created: 1760546613405
+      modified: 1760546660417
+      isPrivate: false
+      description: ""
+      sortKey: -1760546613405
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/descartaveis/listar-esterelizados/true
+    name: Listar Esterelizados
+    meta:
+      id: req_0367bcdb1dff4721aaa0e49ef622aae8
+      created: 1760546668538
+      modified: 1760546720158
+      isPrivate: false
+      description: ""
+      sortKey: -1760546668538
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/descartaveis/listar-por-tipo-descartavel/EPI
+    name: Listar Por Tipo de Descartável
+    meta:
+      id: req_9e2c6bccf5d4467997e26a432a0d1d74
+      created: 1760546722869
+      modified: 1760546820642
+      isPrivate: false
+      description: ""
+      sortKey: -1760546722869
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a7565ee6e8d74d54916880e617f4cab937becef5
+    created: 1760541207788
+    modified: 1760541207788
+environments:
+  name: Base Environment
+  meta:
+    id: env_a7565ee6e8d74d54916880e617f4cab937becef5
+    created: 1760541207784
+    modified: 1760541207784
+    isPrivate: false

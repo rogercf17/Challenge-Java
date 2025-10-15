@@ -1,0 +1,204 @@
+type: collection.insomnia.rest/5.0
+name: Challenge_Collection_Equipamento
+meta:
+  id: wrk_429ded1e182b4258a2c8978093ab72e1
+  created: 1760483538587
+  modified: 1760483538587
+  description: ""
+collection:
+  - url: http://localhost:8080/equipamentos
+    name: Listar
+    meta:
+      id: req_7809e3258aa04203a5928d85b6d6b403
+      created: 1760483546265
+      modified: 1760483562585
+      isPrivate: false
+      description: ""
+      sortKey: -1760483546265
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/equipamentos
+    name: Adicionar
+    meta:
+      id: req_1f49cc0e0fa540429af36fdd2f4a179c
+      created: 1760483588504
+      modified: 1760533665747
+      isPrivate: false
+      description: ""
+      sortKey: -1760483588504
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "nome": "Desfibrilador",
+          "fabricante": "Pfizer",
+          "quantidade": 10,
+          "precoUnitario": 30500,
+          "categoria": "Equipamento",
+          "numeroSerie": "DEF-GE477389",
+          "setor": "Emergência",
+          "dataAquisicao": "2023-08-05T00:00:00",
+          "ultimaManutencao": "2025-01-05T00:00:00",
+          "vidaUtilMeses": 110,
+          "emUso": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/equipamentos/2
+    name: Buscar Por ID
+    meta:
+      id: req_818deb6747d64d58a7b110307e72aa7d
+      created: 1760534832970
+      modified: 1760534942516
+      isPrivate: false
+      description: ""
+      sortKey: -1760534832970
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/equipamentos/2
+    name: Atualizar
+    meta:
+      id: req_58e2ade7d6a74cca85fffff330d58f4a
+      created: 1760534946876
+      modified: 1760535031784
+      isPrivate: false
+      description: ""
+      sortKey: -1760534946876
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Desfibrilador",
+          "fabricante": "Pfizer",
+          "quantidade": 10,
+          "precoUnitario": 30500,
+          "categoria": "Equipamento",
+          "numeroSerie": "DEF-GE477389",
+          "setor": "Emergência",
+          "dataAquisicao": "2023-08-05T00:00:00",
+          "ultimaManutencao": "2025-01-05T00:00:00",
+          "vidaUtilMeses": 108,
+          "emUso": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/equipamentos/2
+    name: Deletar
+    meta:
+      id: req_af85869328be43e88f12f3bab58f8b81
+      created: 1760535035417
+      modified: 1760535061725
+      isPrivate: false
+      description: ""
+      sortKey: -1760535035417
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/equipamentos/listar-por-setor/Emergência
+    name: Listar Por Setor
+    meta:
+      id: req_f9b1fedb869d47c49d1475a75f29ccfc
+      created: 1760535344698
+      modified: 1760535408411
+      isPrivate: false
+      description: ""
+      sortKey: -1760535344698
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/equipamentos/buscar-por-num-serie/BI-BB202356
+    name: Buscar Por Número de Série
+    meta:
+      id: req_aa4a8db39d1641488ee10cbee9d51597
+      created: 1760535442485
+      modified: 1760535500680
+      isPrivate: false
+      description: ""
+      sortKey: -1760535442485
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e459936d0b49bf608c4650ef63059b65d31d090a
+    created: 1760483538639
+    modified: 1760483538639
+environments:
+  name: Base Environment
+  meta:
+    id: env_e459936d0b49bf608c4650ef63059b65d31d090a
+    created: 1760483538631
+    modified: 1760483538631
+    isPrivate: false

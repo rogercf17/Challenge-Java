@@ -1,0 +1,208 @@
+type: collection.insomnia.rest/5.0
+name: Challenge_Collection_Remedios
+meta:
+  id: wrk_e0c99e16e3b5457fbeb7433bcb467d0b
+  created: 1760539691365
+  modified: 1760539691365
+  description: ""
+collection:
+  - url: http://localhost:8080/remedios
+    name: Listar
+    meta:
+      id: req_cee6aa86cdb7484b8ded994ffcbe9854
+      created: 1760539695519
+      modified: 1760539711567
+      isPrivate: false
+      description: ""
+      sortKey: -1760539695519
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/remedios
+    name: Adicionar
+    meta:
+      id: req_4ac15c2128904b4194ff9015b8a60219
+      created: 1760539714858
+      modified: 1760540539696
+      isPrivate: false
+      description: ""
+      sortKey: -1760539714858
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "Azitromicina Di-Hidratada",
+        		"fabricante": "Medley",
+        		"quantidade": 70,
+        		"precoUnitario": 15.8,
+        		"categoria": "Remédio",
+        		"lote": "L90009I",
+        		"principioAtivo": "Azitromicina",
+        		"formaFarmaceutica": "Comprimido",
+        		"viaAdministracao": "Oral",
+        		"dataFabricacao": "2022-12-20T00:00:00",
+        		"dataValidade": "2027-12-20T00:00:00",
+        		"controlado": true,
+        		"vencido": false
+        	}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/remedios/1
+    name: Buscar Por ID
+    meta:
+      id: req_bb4ed545102b41008a5ca106bd8abeb4
+      created: 1760540542417
+      modified: 1760540571203
+      isPrivate: false
+      description: ""
+      sortKey: -1760540542417
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/remedios/1
+    name: Atualizar
+    meta:
+      id: req_f15101301b224d69b88c9975f3a119e9
+      created: 1760540574100
+      modified: 1760540778140
+      isPrivate: false
+      description: ""
+      sortKey: -1760540574100
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"nome": "Paracetamol 500mg",
+        		"fabricante": "EMS",
+        		"quantidade": 200,
+        		"precoUnitario": 1.5,
+        		"categoria": "Remédio",
+        		"lote": "LTP001",
+        		"principioAtivo": "Paracetamol",
+        		"formaFarmaceutica": "Comprimido",
+        		"viaAdministracao": "Oral",
+        		"dataFabricacao": "2024-02-15T00:00:00",
+        		"dataValidade": "2026-02-15T00:00:00",
+        		"controlado": false,
+        		"vencido": false
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/remedios/7
+    name: Deletar
+    meta:
+      id: req_3cfe2731a72d456d8600f1e9cf399c2b
+      created: 1760540781209
+      modified: 1760540810187
+      isPrivate: false
+      description: ""
+      sortKey: -1760540781209
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/remedios/listar-remedios-controlados/false
+    name: Listar Remédios Controlados
+    meta:
+      id: req_177efdee39594b87896ef502cd00fc7c
+      created: 1760540850165
+      modified: 1760541053607
+      isPrivate: false
+      description: ""
+      sortKey: -1760540850165
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/remedios/listar-por-principio-ativo/paracetamol
+    name: Listar Remédios Por Princípio Ativo
+    meta:
+      id: req_6be8bcf1caaf4947a015367f0200b2a1
+      created: 1760541069917
+      modified: 1760541154350
+      isPrivate: false
+      description: ""
+      sortKey: -1760541069917
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a4fb7a6ca1178a161a599454cc8cfa10b7b08577
+    created: 1760539691372
+    modified: 1760539691372
+environments:
+  name: Base Environment
+  meta:
+    id: env_a4fb7a6ca1178a161a599454cc8cfa10b7b08577
+    created: 1760539691369
+    modified: 1760539691369
+    isPrivate: false
